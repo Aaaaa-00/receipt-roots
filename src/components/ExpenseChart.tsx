@@ -28,7 +28,7 @@ const ExpenseChart = ({ data, period }: ExpenseChartProps) => {
         <div className="bg-card border border-border rounded-lg shadow-medium p-3">
           <p className="font-medium text-card-foreground">{`${label}`}</p>
           <p className="text-expense font-semibold">
-            {`Amount: $${payload[0].value.toLocaleString()}`}
+            {`Amount: RM${payload[0].value.toLocaleString()}`}
           </p>
         </div>
       );
@@ -56,7 +56,7 @@ const ExpenseChart = ({ data, period }: ExpenseChartProps) => {
             <YAxis 
               stroke="hsl(var(--muted-foreground))"
               fontSize={12}
-              tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+              tickFormatter={(value) => `RM${(value / 1000).toFixed(0)}k`}
             />
             <Tooltip content={<CustomTooltip />} />
             <Area
@@ -86,7 +86,7 @@ const ExpenseChart = ({ data, period }: ExpenseChartProps) => {
           <YAxis 
             stroke="hsl(var(--muted-foreground))"
             fontSize={12}
-            tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+            tickFormatter={(value) => `RM${(value / 1000).toFixed(0)}k`}
           />
           <Tooltip content={<CustomTooltip />} />
           <Bar

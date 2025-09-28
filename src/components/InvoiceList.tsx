@@ -157,7 +157,7 @@ const InvoiceList = () => {
             <DollarSign className="h-4 w-4 text-expense" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-expense">${totalAmount.toLocaleString()}</div>
+            <div className="text-2xl font-bold text-expense">RM{totalAmount.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">Current view</p>
           </CardContent>
         </Card>
@@ -168,7 +168,7 @@ const InvoiceList = () => {
             <DollarSign className="h-4 w-4 text-success" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-success">${approvedAmount.toLocaleString()}</div>
+            <div className="text-2xl font-bold text-success">RM{approvedAmount.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">
               {filteredInvoices.filter(inv => inv.status === "approved").length} invoices
             </p>
@@ -330,7 +330,7 @@ const InvoiceList = () => {
                         </Badge>
                       </TableCell>
                       <TableCell className="font-medium text-expense">
-                        ${invoice.amount.toLocaleString()}
+                        RM{invoice.amount.toLocaleString()}
                       </TableCell>
                       <TableCell>
                         {new Date(invoice.date).toLocaleDateString()}

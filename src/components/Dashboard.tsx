@@ -76,7 +76,7 @@ const Dashboard = () => {
               <TrendingUp className="h-4 w-4 text-expense" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-expense">${totalExpenses.toLocaleString()}</div>
+              <div className="text-2xl font-bold text-expense">RM{totalExpenses.toLocaleString()}</div>
               <p className="text-xs text-muted-foreground">Across all entities</p>
             </CardContent>
           </Card>
@@ -87,7 +87,7 @@ const Dashboard = () => {
               <Calendar className="h-4 w-4 text-primary" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-primary">${Math.round(averageMonthly).toLocaleString()}</div>
+              <div className="text-2xl font-bold text-primary">RM{Math.round(averageMonthly).toLocaleString()}</div>
               <p className="text-xs text-muted-foreground">12-month average</p>
             </CardContent>
           </Card>
@@ -102,7 +102,7 @@ const Dashboard = () => {
               )}
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">${currentMonth.amount.toLocaleString()}</div>
+              <div className="text-2xl font-bold">RM{currentMonth.amount.toLocaleString()}</div>
               <p className={`text-xs ${monthlyChange >= 0 ? 'text-success' : 'text-expense'}`}>
                 {monthlyChange >= 0 ? '+' : ''}{monthlyChange.toFixed(1)}% from last month
               </p>
@@ -151,7 +151,7 @@ const Dashboard = () => {
                         <span className="font-medium">{entity.name}</span>
                       </div>
                       <div className="text-right">
-                        <div className="font-semibold text-expense">${entity.totalExpenses.toLocaleString()}</div>
+                        <div className="font-semibold text-expense">RM{entity.totalExpenses.toLocaleString()}</div>
                         <div className="text-xs text-muted-foreground">
                           {((entity.totalExpenses / totalExpenses) * 100).toFixed(1)}%
                         </div>
@@ -175,7 +175,7 @@ const Dashboard = () => {
                       <div className="flex items-center justify-between">
                         <span className="text-sm font-medium">{category.name}</span>
                         <div className="flex items-center gap-2">
-                          <span className="text-sm font-semibold">${category.amount.toLocaleString()}</span>
+                          <span className="text-sm font-semibold">RM{category.amount.toLocaleString()}</span>
                           <Badge variant="secondary" className="text-xs">
                             {category.percentage}%
                           </Badge>

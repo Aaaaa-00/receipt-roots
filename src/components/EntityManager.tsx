@@ -184,7 +184,7 @@ const EntityManager = ({ entities: initialEntities }: EntityManagerProps) => {
             <DollarSign className="h-4 w-4 text-expense" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-expense">${totalExpenses.toLocaleString()}</div>
+            <div className="text-2xl font-bold text-expense">RM{totalExpenses.toLocaleString()}</div>
             <p className="text-xs text-muted-foreground">Across all entities</p>
           </CardContent>
         </Card>
@@ -196,7 +196,7 @@ const EntityManager = ({ entities: initialEntities }: EntityManagerProps) => {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              ${entities.length > 0 ? Math.round(totalExpenses / entities.length).toLocaleString() : 0}
+              RM{entities.length > 0 ? Math.round(totalExpenses / entities.length).toLocaleString() : 0}
             </div>
             <p className="text-xs text-muted-foreground">Average expenses</p>
           </CardContent>
@@ -264,7 +264,7 @@ const EntityManager = ({ entities: initialEntities }: EntityManagerProps) => {
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-muted-foreground">Total Expenses</span>
                         <Badge variant={entity.totalExpenses > 0 ? "destructive" : "secondary"} className="text-xs">
-                          ${entity.totalExpenses.toLocaleString()}
+                          RM{entity.totalExpenses.toLocaleString()}
                         </Badge>
                       </div>
                       
