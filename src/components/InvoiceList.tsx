@@ -81,9 +81,9 @@ const mockInvoices: Invoice[] = [
 const InvoiceList = () => {
   const [invoices] = useState<Invoice[]>(mockInvoices);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterEntity, setFilterEntity] = useState<string>("");
-  const [filterStatus, setFilterStatus] = useState<string>("");
-  const [filterCategory, setFilterCategory] = useState<string>("");
+  const [filterEntity, setFilterEntity] = useState<string>("all-entities");
+  const [filterStatus, setFilterStatus] = useState<string>("all-statuses");
+  const [filterCategory, setFilterCategory] = useState<string>("all-categories");
 
   const entities = Array.from(new Set(invoices.map(inv => inv.entity)));
   const categories = Array.from(new Set(invoices.map(inv => inv.category)));
@@ -95,9 +95,9 @@ const InvoiceList = () => {
       invoice.vendor.toLowerCase().includes(searchTerm.toLowerCase()) ||
       invoice.filename.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesEntity = !filterEntity || invoice.entity === filterEntity;
-    const matchesStatus = !filterStatus || invoice.status === filterStatus;
-    const matchesCategory = !filterCategory || invoice.category === filterCategory;
+    const matchesEntity = !filterEntity || filterEntity === "all-entities" || invoice.entity === filterEntity;
+    const matchesStatus = !filterStatus || filterStatus === "all-statuses" || invoice.status === filterStatus;
+    const matchesCategory = !filterCategory || filterCategory === "all-categories" || invoice.category === filterCategory;
 
     return matchesSearch && matchesEntity && matchesStatus && matchesCategory;
   });
@@ -219,7 +219,7 @@ const InvoiceList = () => {
                   <SelectValue placeholder="All entities" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All entities</SelectItem>
+                  <SelectItem value="all-entities">All entities</SelectItem>
                   {entities.map(entity => (
                     <SelectItem key={entity} value={entity}>{entity}</SelectItem>
                   ))}
@@ -234,7 +234,7 @@ const InvoiceList = () => {
                   <SelectValue placeholder="All categories" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All categories</SelectItem>
+                  <SelectItem value="all-categories">All categories</SelectItem>
                   {categories.map(category => (
                     <SelectItem key={category} value={category}>{category}</SelectItem>
                   ))}
@@ -249,7 +249,7 @@ const InvoiceList = () => {
                   <SelectValue placeholder="All statuses" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All statuses</SelectItem>
+                  <SelectItem value="all-statuses">All statuses</SelectItem>
                   {statuses.map(status => (
                     <SelectItem key={status} value={status} className="capitalize">
                       {status}
@@ -265,9 +265,9 @@ const InvoiceList = () => {
                 variant="outline" 
                 onClick={() => {
                   setSearchTerm("");
-                  setFilterEntity("");
-                  setFilterStatus("");
-                  setFilterCategory("");
+                  setFilterEntity("all-entities");
+                  setFilterStatus("all-statuses");
+                  setFilterCategory("all-categories");
                 }}
                 className="w-full"
               >
